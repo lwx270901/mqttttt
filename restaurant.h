@@ -7,6 +7,8 @@
 
 
 #include "main.h"
+
+//enum
 enum InstructionType{
     NONE,
     REG,
@@ -16,14 +18,16 @@ enum InstructionType{
     PQ,
     SQ
 };
-int stringToInt(string str);
+
+//Helper function
+
 table* setTable(table* current, int ID, string name, int age);
-
 bool is_number(const std::string& str);
-
 void printTables(table* start);
 
+//End helper function
 
+//Instruction implementation
 class Instruction {
 public:
     virtual void printInstruction(restaurant* r, string output[]) = 0;
@@ -36,11 +40,11 @@ public:
     void printInstruction(restaurant* r, string output[]) {
         if(is_number(output[1])) //TH co ID
         {
-            r->recentTable = setTable(r->recentTable, stringToInt(output[1]) , output[2], stringToInt(output[3]));
+            setTable(r->recentTable->next, stoi(output[1]) , output[2], stoi(output[3]));
         }
         else//TH nhan vien dat ban tuy y
         {
-            r->recentTable = setTable(r->recentTable, r->recentTable->ID , output[2], stringToInt(output[3]));
+            setTable(r->recentTable->next, 1 , output[1], stoi(output[2]));
         }
     }
 };
@@ -78,6 +82,10 @@ public:
 
     }
 };
+
+//End instruction implementation
+
+
 
 
 

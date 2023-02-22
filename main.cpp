@@ -4,7 +4,7 @@
 int main(int argc, char* argv[]) {
 
     restaurant* r = new restaurant();
-    string fileName = "D:\\Minh\\code\\CandC++\\Asignment1\\test.txt";
+    string fileName = "/home/lme3hc/Minh/Mycode/C++/mqttttt/test.txt";
 
     //initialize table with ID, name and age
     for (int i = 1; i <= MAXSIZE; i++)

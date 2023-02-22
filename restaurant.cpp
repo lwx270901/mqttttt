@@ -11,6 +11,16 @@ table* setTable(table* current, int ID, string name, int age) {
     table* temp = current;
     do {
         if (temp->ID == ID) {
+            if(temp->name != "")
+            {
+                ID++;
+                if(ID > 15)
+                {
+                    ID = 1;
+                }
+                temp = temp->next;
+                continue;
+            }
             temp->name = name;
             temp->age = age;
             return temp;
@@ -34,15 +44,6 @@ bool is_number(const std::string& str) {
         }
     }
     return true;
-}
-
-int stringToInt(string str) {
-    int num = 0;
-    for (int i = 0; i < str.length(); i++) {
-        int digit = (int)str[i] - (int)'0';
-        num = num * 10 + digit;
-    }
-    return num;
 }
 
 void printTables(table* start) {
@@ -126,9 +127,8 @@ void simulate(string filename, restaurant* r)
             if(pInstruction != NULL) pInstruction->printInstruction(r, output);
             delete pInstruction;
 
-
         }
-        printTables(r->recentTable);
+        printTables(r->recentTable->next);
         file.close();
     }
     else
